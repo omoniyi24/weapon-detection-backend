@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>YOLOv8 Real-Time Weapon Detection</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body, html {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f4f7f6;
+            color: #333;
+        }
+
+        main {
+            flex: 1; /* Takes up the remaining space */
+        }
+
+        header.feature-box {
+            background-color: #0056b3;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        header.feature-box.second {
+            background-color: #007bff;
+        }
+
+        h1 {
+            font-size: 2rem;
+            font-weight: 700;
+        }
+
+        .video-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 40px 0;
+        }
+
+        img {
+            width: 800px;
+            height: auto;
+            border: 5px solid #007bff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: none; /* Hide the video initially */
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #0056b3;
+            color: white;
+            position: static;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .spinner {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 200px;
+        }
+
+        .loader {
+            border: 16px solid #f3f3f3;
+            border-radius: 50%;
+            border-top: 16px solid #3498db;
+            width: 120px;
+            height: 120px;
+            animation: spin 2s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @media (max-width: 850px) {
+            img {
+                width: 100%;
+                height: auto;
+            }
+        }
+    </style>
+
+    <script>
+        // Function to hide the spinner and display the video once it's loaded
+        function showVideo() {
+            document.getElementById("spinner").style.display = "none";  // Hide the spinner
+            document.getElementById("video").style.display = "block";   // Show the video
+        }
+    </script>
+
+</head>
+<body>
+
+<header class="feature-box top">
+    <h1><strong>YOLOv8 Real-Time Weapon Detection</strong></h1>
+</header>
+
+<main>
+    <header class="feature-box second">
+        <h1><strong>Output Video</strong></h1>
+    </header>
+
+    <!-- Spinner -->
+    <div id="spinner" class="spinner">
+        <div class="loader"></div>
+    </div>
+
+    <section class="video-container">
+        <!-- Video will load here, hidden initially -->
+        <img id="video" src="{{ url_for('webapp') }}" alt="Webcam Output Video" onload="showVideo()">
+    </section>
+</main>
+
+<footer>
+    <p>&copy; 2024 YOLOv8 Weapon Detection System  by Omoniyi Ilesanmi (University of West London). All Rights Reserved.</p>
+</footer>
+
+</body>
+</html>

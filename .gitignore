@@ -1,0 +1,11 @@
+.env
+.env.
+venv/
+__pycache__/
+temp_images/*
+stakwork/
+*.csv
+*.json
+
+.DS_Store
+.idea/
